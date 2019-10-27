@@ -11,13 +11,15 @@ import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
-    val mBdinding: MainActivityBinding = DataBindingUtil.setContentView(this, R.layout.main_activity)
+    private lateinit var mBinding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
         initializeUi()
+
+        mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity)
     }
 
     private fun initializeUi() {
