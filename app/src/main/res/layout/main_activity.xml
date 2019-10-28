@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
             type="com.bman.bananaslicerremastered.ui.BananaViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
@@ -31,40 +30,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.252" />
 
-        <EditText
-            android:id="@+id/editText_quote"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.7"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:hint="Quote"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_quotes"
-            app:layout_constraintVertical_bias="0.0" />
-
 
         <Button
             android:id="@+id/button_add_quote"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:backgroundTint="?colorAccent"
             android:text="Add Quote"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/textView_quotes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/editText_quote"
-            app:layout_constraintTop_toTopOf="@+id/editText_quote"
+            app:layout_constraintTop_toBottomOf="@id/textView_quotes"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_percent="0.25" />
 
@@ -72,7 +51,7 @@
             android:id="@+id/textView"
             android:layout_width="410dp"
             android:layout_height="87dp"
-            android:text="TextView"
+            android:text="@{`Bananas: ` + viewModel.bananas}"
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/textView_quotes"
             app:layout_constraintHorizontal_bias="1.0"

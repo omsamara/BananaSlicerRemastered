@@ -1,5 +1,7 @@
 package com.bman.bananaslicerremastered.ui
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bman.bananaslicerremastered.data.Quote
 import com.bman.bananaslicerremastered.data.QuoteRepository
@@ -15,6 +17,13 @@ You want to keep as much logic out of the ViewModel as possible to keep your cod
 class BananaViewModel(private val quoteRepository: QuoteRepository)
     : ViewModel() {
 
+    private val _bananas = MutableLiveData<Long>(0)
+    val bananas: LiveData<Long>
+        get() = _bananas
+
+    fun increaseBananas() {
+        _bananas.value = (_bananas.value)?.plus(1)
+    }
     fun getQuotes() = quoteRepository.getQuotes()
 
     fun addQuote(quote: Quote) = quoteRepository.addQuote(quote)

@@ -16,18 +16,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-
         initializeUi()
-
-        mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity)
     }
 
     private fun initializeUi() {
         val factory = InjectorUtils.provideBananaViewModelFactory()
-
-        // ViewModelProviders.of is deprecated
-        // https://stackoverflow.com/questions/53903762/viewmodelproviders-is-deprecated-in-1-1-0
         val viewModel = ViewModelProvider(this, factory).get(BananaViewModel::class.java)
+
+        mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity)
+        mBinding.lifecycleOwner = this
+
+        mBinding.viewModel = viewModel
 //        viewModel.getQuotes().observe(this, Observer { quotes ->
 //            val stringBuilder = StringBuilder()
 //            quotes.forEach {quote ->
@@ -37,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 //        })
 
         button_add_quote.setOnClickListener {
+            viewModel.increaseBananas()
         }
 
     }
