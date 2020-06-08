@@ -3,8 +3,6 @@ package com.bman.bananaslicerremastered.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bman.bananaslicerremastered.data.Quote
-import com.bman.bananaslicerremastered.data.QuoteRepository
 
 /**
  * The Model's purpose is to represent (or model) your business domain. Therefore, business logic by definition goes in the Model, not the ViewModel.
@@ -14,7 +12,7 @@ You want to keep as much logic out of the ViewModel as possible to keep your cod
  */
 // QuoteRepository dependency will again be passed in the
 // constructor using dependency injection
-class BananaViewModel(private val quoteRepository: QuoteRepository)
+class BananaViewModel()
     : ViewModel() {
 
     private val _bananas = MutableLiveData<Long>(0)
@@ -24,7 +22,4 @@ class BananaViewModel(private val quoteRepository: QuoteRepository)
     fun increaseBananas() {
         _bananas.value = (_bananas.value)?.plus(1)
     }
-    fun getQuotes() = quoteRepository.getQuotes()
-
-    fun addQuote(quote: Quote) = quoteRepository.addQuote(quote)
 }

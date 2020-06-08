@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.bman.bananaslicerremastered.R
 import com.bman.bananaslicerremastered.databinding.MainActivityBinding
-import com.bman.bananaslicerremastered.utility.InjectorUtils
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,20 +19,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeUi() {
-        val factory = InjectorUtils.provideBananaViewModelFactory()
-        val viewModel = ViewModelProvider(this, factory).get(BananaViewModel::class.java)
+        val viewModel = ViewModelProvider(this, BananaViewModelFactory()).get(BananaViewModel::class.java)
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity)
         mBinding.lifecycleOwner = this
 
         mBinding.viewModel = viewModel
-//        viewModel.getQuotes().observe(this, Observer { quotes ->
-//            val stringBuilder = StringBuilder()
-//            quotes.forEach {quote ->
-//                stringBuilder.append("$quote\n\n")
-//            }
-//            textView_quotes.text = stringBuilder.toString()
-//        })
 
         button_add_quote.setOnClickListener {
             viewModel.increaseBananas()
