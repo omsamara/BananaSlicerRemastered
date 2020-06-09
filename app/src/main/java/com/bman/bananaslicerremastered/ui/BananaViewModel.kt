@@ -15,11 +15,15 @@ You want to keep as much logic out of the ViewModel as possible to keep your cod
 class BananaViewModel()
     : ViewModel() {
 
-    private val _bananas = MutableLiveData<Long>(0)
+    private val _bananas =  MutableLiveData<Long>(0)
     val bananas: LiveData<Long>
         get() = _bananas
 
     fun increaseBananas() {
         _bananas.value = (_bananas.value)?.plus(1)
+    }
+
+    fun decreaseBananas() {
+        _bananas.value = (_bananas.value)?.minus(1)
     }
 }

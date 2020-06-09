@@ -30,5 +30,9 @@ class MainActivity : AppCompatActivity() {
             viewModel.increaseBananas()
         }
 
+        decrease_bananas.setOnClickListener {
+            viewModel.decreaseBananas()
+        }
+
     }
 }
