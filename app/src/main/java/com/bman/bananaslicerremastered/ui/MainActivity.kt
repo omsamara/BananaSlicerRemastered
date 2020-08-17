@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.viewModel = viewModel
 
-        button_add_quote.setOnClickListener {
-            viewModel.increaseBananas()
+        btnIncreaseBananas.setOnClickListener {
+            viewModel.increaseBananas(500)
         }
 
         decrease_bananas.setOnClickListener {

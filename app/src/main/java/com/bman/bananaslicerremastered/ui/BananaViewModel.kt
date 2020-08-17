@@ -1,8 +1,11 @@
 package com.bman.bananaslicerremastered.ui
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlin.concurrent.fixedRateTimer
 
 /**
  * The Model's purpose is to represent (or model) your business domain. Therefore, business logic by definition goes in the Model, not the ViewModel.
@@ -19,11 +22,22 @@ class BananaViewModel()
     val bananas: LiveData<Long>
         get() = _bananas
 
-    fun increaseBananas() {
-        _bananas.value = (_bananas.value)?.plus(1)
+    private val fixedRateTimer = fixedRateTimer(name = "", initialDelay =  0, period = 200) {
+        Handler(Looper.getMainLooper()).post{
+            increaseBananas(1)
+        }
+    }
+
+    fun increaseBananas(delta: Int) {
+        _bananas.value = (_bananas.value)?.plus(delta)
     }
 
     fun decreaseBananas() {
         _bananas.value = (_bananas.value)?.minus(1)
+    }
+
+    override fun onCleared() {
+        fixedRateTimer.cancel()
+        fixedRateTimer.purge()
     }
 }

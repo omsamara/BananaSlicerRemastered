@@ -13,33 +13,41 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
+        <TextView
+            android:id="@+id/bananasText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Bananas: ` + viewModel.bananas}"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
-            android:id="@+id/textView_quotes"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:contentDescription="Banana Image"
+            android:id="@+id/bananaImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/rotated_banana"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:adjustViewBounds="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@id/bananasText"
+            android:contentDescription="TODO" />
 
         <Button
-            android:id="@+id/button_add_quote"
+            android:id="@+id/btnIncreaseBananas"
             android:layout_width="106dp"
             android:layout_height="153dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:layout_marginRight="64dp"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="?colorAccent"
             android:text="Increase Bananas"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_quotes"
+            app:layout_constraintTop_toBottomOf="@+id/bananaImage"
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_percent="0.25" />
 
@@ -50,28 +58,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="224dp"
             android:layout_marginRight="224dp"
-            android:text="Decrease Bananas"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="?colorAccent"
+            android:text="Decrease Bananas"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_quotes"
+            app:layout_constraintTop_toBottomOf="@+id/bananaImage"
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_percent="0.25" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="410dp"
-            android:layout_height="87dp"
-            android:gravity="center"
-            android:text="@{`Bananas: ` + viewModel.bananas}"
-            android:textSize="30sp"
-            android:layout_marginTop="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView_quotes"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.218" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
